@@ -8,9 +8,10 @@ const Auth = ({ isSignInPage = true }) => {
   const navigate = useNavigate();
   const [data, setData] = useState({
     ...(!isSignInPage && {
-      fullName: ''
+      firstname:'',
+      lastname:''
     }),
-    email: '',
+    username: '',
     password: ''
   });
 
@@ -31,22 +32,33 @@ const Auth = ({ isSignInPage = true }) => {
         <form className="auth-form" onSubmit={(e) => handleSubmit(e)}>
           {!isSignInPage && (
             <Input
-              label="Full name"
-              name="name"
+              label="First Name"
+              name="fname"
               placeholder="Enter your full name"
               className="auth-input"
-              value={data.fullName}
-              onChange={(e) => setData({ ...data, fullName: e.target.value })}
+              value={data.firstname}
+              onChange={(e) => setData({ ...data, firstname: e.target.value })}
             />
+          )}
+          {!isSignInPage && (
+            <Input
+              label="Last Name"
+              name="lname"
+              placeholder="Enter your full name"
+              className="auth-input"
+              value={data.lastname}
+              onChange={(e) => setData({ ...data, lastname: e.target.value })}
+            />
+            
           )}
           <Input
             label="Email address"
             type="email"
-            name="email"
+            name="username"
             placeholder="Enter your email"
             className="auth-input"
-            value={data.email}
-            onChange={(e) => setData({ ...data, email: e.target.value })}
+            value={data.username}
+            onChange={(e) => setData({ ...data, username: e.target.value })}
           />
           <Input
             label="Password"
