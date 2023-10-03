@@ -1,12 +1,8 @@
 const express = require('express');
 const MessageController = require('../controllers/MessageController.js');
+const {addMessage,getMessages} = MessageController;
 
 const router = express.Router();
-
-const {
-  addMessage,
-  getMessages,
-} = MessageController;
 
 router.post('/', addMessage);
 

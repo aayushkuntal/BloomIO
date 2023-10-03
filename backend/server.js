@@ -24,7 +24,7 @@ app.options('*', cors());
 app.use('/auth',authRoute);
 app.use('/user',userRoute);
 app.use('/chat',chatRoute);
-app.use('message',messageRoute);
+app.use('/message',messageRoute);
 
 //Port
 const PORT=process.env.PORT || 3000;
