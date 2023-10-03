@@ -8,15 +8,16 @@
 }
 
 .auth-card {
+  z-index: 1;
   background-color: white;
-  width: 600px;
-  height: 800px;
+  width: min(700px, 90%);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding:3rem 0;
 }
 
 .auth-heading {

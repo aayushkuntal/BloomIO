@@ -6,12 +6,13 @@ import { Routes, Route, Navigate } from "react-router-dom";
 const App = () => {
   return (
     <div className="App">
-      <div className="blur" style ={{top:'-18%',right:'0'}}></div>
-      <div className="blur" style ={{top:'36%',left:'-8rem'}}></div>
+      <div className="blur" style={{ top: '-18%', right: '0' }}></div>
+      <div className="blur" style={{ top: '36%', left: '-8rem' }}></div>
 
       <Routes>
-        <Route path="/signin" element={<Auth />}/>
-        <Route path="/signup" element={<Auth isSignInPage ={false} />} />
+        <Route path="/signin" element={<Auth />} />
+        <Route path="/signup" element={<Auth isSignInPage={false} />} />
+        <Route path='/chat' element={<Chat />} />
       </Routes>
     </div>
   )

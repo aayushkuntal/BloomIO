@@ -20,10 +20,10 @@
     overflow: hidden;
     color: var(--black);
     background: #f3f3f3;
-    padding: 1rem 1rem;
 }
 
 .blur {
+    z-index: 0;
     position: absolute;
     width: 22rem;
     height: 14rem;
