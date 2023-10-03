@@ -1,0 +1,70 @@
+/* Auth.css */
+.auth-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.auth-card {
+  background-color: white;
+  width: 600px;
+  height: 800px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-heading {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.auth-subheading {
+  font-size: 1rem;
+  font-weight: lighter;
+  margin-bottom: 1rem;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 75%;
+}
+
+.auth-input {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.auth-button {
+  width: 75%;
+  margin-bottom: 0.5rem;
+}
+
+.auth-switch {
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.auth-link {
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.custom-input{
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  border: 1px solid #ced4da;
+}
