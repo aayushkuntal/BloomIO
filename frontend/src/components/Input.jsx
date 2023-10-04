@@ -11,6 +11,7 @@ const Input = ({
   placeholder = '',
   value = '',
   onChange = () => {},
+  disabled = false,
 }) => {
   return (
     <div className={`${className}`}>
@@ -25,6 +26,7 @@ const Input = ({
         required={isRequired}
         value={value}
         onChange={onChange}
+        disabled={disabled}
       />
     </div>
   );

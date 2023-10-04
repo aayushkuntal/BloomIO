@@ -3,24 +3,26 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
 import './Auth.css';
-import { useDispatch } from 'react-redux';
-import { logIn } from '../../actions/AuthAction';
+import { useDispatch, useSelector } from 'react-redux';
+import { logIn, signUp } from '../../actions/AuthAction';
+import ClipLoader from "react-spinners/ClipLoader";
 
 const Auth = ({ isSignInPage = true }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [data, setData] = useState({
     ...(!isSignInPage && {
-      firstname:'',
-      lastname:''
+      firstname: '',
+      lastname: ''
     }),
     username: '',
     password: ''
   });
 
+  const loading = useSelector((state) => state.auth.loading);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your Auth submission logic here
 
     if (isSignInPage) {
       // Sign In logic
@@ -61,7 +63,7 @@ const Auth = ({ isSignInPage = true }) => {
               value={data.lastname}
               onChange={(e) => setData({ ...data, lastname: e.target.value })}
             />
-            
+
           )}
           <Input
             label="Email address"
@@ -81,11 +83,15 @@ const Auth = ({ isSignInPage = true }) => {
             value={data.password}
             onChange={(e) => setData({ ...data, password: e.target.value })}
           />
-          <Button
-            label={isSignInPage ? 'Sign in' : 'Sign up'}
-            type="submit"
-            className="auth-button"
-          />
+          {loading ? (
+            <ClipLoader loading= {true}/>
+          ) : (
+            <Button
+              label={isSignInPage ? 'Sign in' : 'Sign up'}
+              type="submit"
+              className="auth-button"
+            />
+          )}
         </form>
         <div className="auth-switch">
           {isSignInPage ? "Didn't have an account?" : "Already have an account?"}{' '}

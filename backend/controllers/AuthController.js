@@ -9,6 +9,13 @@ const registerUser = asyncHandler(async (req, res) => {
     const hashedPassword = await bycrypt.hash(password, 10);
 
     try {
+        //Check if user already exists
+        const userExists = await UserModel.findOne({ username });
+        
+        if (userExists) {
+            res.status(400).json({ message: 'User already exists' });
+        }
+
         const user = await UserModel.create({
             username,
             password: hashedPassword,
