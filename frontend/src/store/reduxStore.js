@@ -25,6 +25,7 @@ store.subscribe(() => saveToLocalStorage(store.getState()));
 function saveToLocalStorage(state) {
   try {
     const serializedState = JSON.stringify(state);
+    console.log(serializedState);
     window.localStorage.setItem('store', serializedState);
   } catch(e) {
     console.log(e);

@@ -1,8 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Chat.css'
 import LogoSearch from '../../components/LogoSearch';
+import { useSelector } from 'react-redux';
+import { userChats } from '../../api/ChatRequest';
+import Conversation from '../../components/Conversation';
+import NavIcons from '../../components/NavIcons';
+import ChatBox from '../../components/ChatBox';
 
 const Chat = () => {
+
+  const user = useSelector((state) => state.auth.authData);
+  const [chats, setChats] = useState([])
+  const [currentChat, setCurrentChat] = useState(null);
+
+  useEffect(() => {
+    const fetchUserChats = async () => {
+      try {
+        const { data } = await userChats(user._id);
+        setChats(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchUserChats();
+  }, []);
+
   return (
     <div className="Chat">
 
@@ -14,7 +37,14 @@ const Chat = () => {
         <div className="Chat-container">
           <h2>Chats</h2>
           <div className="Chat-list">
-            Conversations
+
+            {chats?.map((chat) => (
+              <div key={chat._id} onClick={() => setCurrentChat(chat)}>
+                <Conversation chatData={chat} currentUser={user._id} />
+              </div>
+            ))
+            }
+
           </div>
 
         </div>
@@ -23,11 +53,20 @@ const Chat = () => {
 
       {/* Right Side Chat */}
       <div className="Right-side-chat">
-        <h2>Chat</h2>
+        <div style={{ width: "20rem", alignSelf: "flex-end" }}>
+          <NavIcons />
+        </div>
+
+
+        <ChatBox
+          chat={currentChat}
+          currentUser={user._id}
+        // setSendMessage={setSendMessage}
+        // receivedMessage={receivedMessage}
+        />
       </div>
-
-
     </div>
+
   )
 }
 

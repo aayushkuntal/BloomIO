@@ -1,0 +1,18 @@
+.navIcons{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navIcons>svg{
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.navIcons>a>svg{
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.navIcons>svg:hover{
+    cursor: pointer;
+}
