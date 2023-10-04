@@ -2,6 +2,7 @@ import React from 'react'
 import './App.css'
 import Auth from './pages/Auth/Auth'
 import { Routes, Route, Navigate } from "react-router-dom";
+import Chat from './pages/Chat/Chat';
 
 const App = () => {
   return (

@@ -3,9 +3,12 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
 import './Auth.css';
+import { useDispatch } from 'react-redux';
+import { logIn } from '../../actions/AuthAction';
 
 const Auth = ({ isSignInPage = true }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [data, setData] = useState({
     ...(!isSignInPage && {
       firstname:'',
@@ -18,6 +21,15 @@ const Auth = ({ isSignInPage = true }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Add your Auth submission logic here
+
+    if (isSignInPage) {
+      // Sign In logic
+      dispatch(logIn(data));
+    }
+    else {
+      // Sign Up logic
+      dispatch(signUp(data));
+    }
   };
 
   return (
