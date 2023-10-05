@@ -13,6 +13,7 @@ const userChats = asyncHandler(async (req, res) => {
     const chat = await ChatModel.find({
         members: { $in: [req.params.userId] },
     });
+
     res.status(200).json(chat);
 });
 

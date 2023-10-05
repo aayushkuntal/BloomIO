@@ -4,7 +4,7 @@ import Logo from '../assets/logo.png'
 import InputEmoji from "react-input-emoji";
 import { useRef } from "react";
 import './ChatBox.css'
-import { getMessages } from '../api/MessageRequest';
+import { addMessages, getMessages } from '../api/MessageRequest';
 import { format} from 'timeago.js';
 import { useSelector } from 'react-redux';
 
@@ -16,7 +16,7 @@ const ChatBox = ({ chat,setSendMessage, receivedMessage }) => {
   const currentUser = (useSelector((state) => state.auth.authData))._id;
 
   const handleChange = (newMessage) => {
-    // setNewMessage(newMessage)
+    setNewMessage(newMessage)
   }
 
   //Data for header
@@ -54,24 +54,27 @@ const ChatBox = ({ chat,setSendMessage, receivedMessage }) => {
   //Send Message
   const handleSend = async (e) => {
     e.preventDefault()
-    // const message = {
-    //   senderId: currentUser,
-    //   text: newMessage,
-    //   chatId: chat._id,
-    // }
-    // const receiverId = chat.members.find((id) => id !== currentUser);
-    // // send message to socket server
+    const message = {
+      senderId: currentUser,
+      text: newMessage,
+      chatId: chat._id,
+    }
+    
+    const receiverId = chat.members.find((id) => id !== currentUser);
+
+    // send message to socket server
     // setSendMessage({ ...message, receiverId })
-    // // send message to database
-    // try {
-    //   const { data } = await addMessage(message);
-    //   setMessages([...messages, data]);
-    //   setNewMessage("");
-    // }
-    // catch
-    // {
-    //   console.log("error")
-    // }
+
+    // send message to database
+    try {
+      const { data } = await addMessages(message);
+      setMessages([...messages, data]);
+      setNewMessage("");
+    }
+    catch
+    {
+      console.log("error")
+    }
   }
 
   const scroll = useRef();
