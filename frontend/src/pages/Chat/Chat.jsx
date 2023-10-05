@@ -17,7 +17,7 @@ const Chat = () => {
   const socket = useRef();
 
   useEffect(() => {
-    socket.current = io("http://localhost:5000");
+    socket.current = io("https://bloomio-socket.onrender.com:5000");
     socket.current.emit('add-user', user._id);
     socket.current.on('get-users', (users) => {
       setOnlineUsers(users);

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: "http://localhost:3000" });
+const API = axios.create({baseURL: 'https://bloomio-api.onrender.com'});
 
 // Function to retrieve the token from localStorage safely
 const getTokenFromLocalStorage = () => {
